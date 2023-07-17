@@ -4,8 +4,8 @@ import { Component } from "@angular/core";
     standalone: true,
     selector: 'app-header',
     template: `
-    <header>
-        <h1 class="text-3xl text-blue-800">Intro to programming</h1>
+    <header class="p-4 border-b-2 border-black">
+        <h1 class="text-3xl text-primary font-black">Intro to programming</h1>
         <p>Sample Full-Stack Application For Class</p>
     </header>
     `
