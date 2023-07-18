@@ -14,11 +14,13 @@ import { TodoListEntryModel, TodoListItemModel } from './models';
 export class TodosComponent {
   todoList: TodoListItemModel[] = [];
 
-  onItemAdded(item: TodoListEntryModel) {
-    this.todoList.push({
-      description: item.description,
-      status: 'Now',
-      id: '1',
-    });
+  onItemAdded(candidate: TodoListEntryModel) {
+    const newItem: TodoListItemModel = {
+      description: candidate.description,
+      status: 'Later',
+      id: '99',
+    };
+
+    this.todoList = [newItem, ...this.todoList];
   }
 }
