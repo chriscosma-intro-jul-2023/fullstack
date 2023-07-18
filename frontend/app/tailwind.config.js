@@ -12,7 +12,7 @@ module.exports = {
     require('daisyui')
   ],
   daisyui: {
-    themes: ["cyberpunk", "aqua", "cupcake"]
+    themes: ["cupcake", "aqua", "cyberpunk"]
   }
 }
 
