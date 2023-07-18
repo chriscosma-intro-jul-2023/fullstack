@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TodoListItemModel } from '../../models';
 
@@ -11,4 +11,10 @@ import { TodoListItemModel } from '../../models';
 })
 export class ListComponent {
   @Input({ required: true }) list: TodoListItemModel[] = [];
+
+  @Output() onStatusCycled = new EventEmitter<TodoListItemModel>();
+
+  cycleTheStatus(item: TodoListItemModel) {
+    this.onStatusCycled.emit(item);
+  }
 }
