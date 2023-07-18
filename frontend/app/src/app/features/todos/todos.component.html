@@ -1,0 +1,9 @@
+<section>
+  <h2 class="text-2xl">Your Todo List Stuff</h2>
+</section>
+<section>
+  <app-entry (onItemAdded)="onItemAdded($event)" />
+</section>
+<section>
+  <app-list [list]="todoList" />
+</section>

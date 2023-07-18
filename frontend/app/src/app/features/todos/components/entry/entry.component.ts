@@ -32,6 +32,7 @@ export class EntryComponent {
       const newItem: TodoListEntryModel = {
         description: this.form.controls.description.value,
       };
+      this.form.controls.description.reset();
       this.onItemAdded.emit(newItem);
     } else {
       this.hasError.set(true);
