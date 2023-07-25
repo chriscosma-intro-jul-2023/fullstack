@@ -3,18 +3,21 @@ import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { CounterEvents } from './state/counter.actions';
 import { selectCounterCurrent } from './state';
+import { CountByComponent } from './components/count-by/count-by.component';
 
 @Component({
   selector: 'app-counter',
   standalone: true,
-  imports: [CommonModule],
   templateUrl: './counter.component.html',
   styleUrls: ['./counter.component.css'],
+  imports: [CommonModule, CountByComponent],
 })
 export class CounterComponent {
   current = this.store.selectSignal(selectCounterCurrent);
 
-  constructor(private readonly store: Store) {}
+  constructor(private readonly store: Store) {
+    store.dispatch(CounterEvents.counterEntered());
+  }
 
   increment() {
     this.store.dispatch(CounterEvents.countIncremented());
@@ -22,5 +25,9 @@ export class CounterComponent {
 
   decrement() {
     this.store.dispatch(CounterEvents.countDecremented());
+  }
+
+  reset() {
+    this.store.dispatch(CounterEvents.countReset());
   }
 }
