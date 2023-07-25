@@ -12,6 +12,12 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
       >
       <a
         [routerLinkActive]="['tab-active']"
+        routerLink="counter"
+        class="tab tab-lg"
+        >Redux Counter</a
+      >
+      <a
+        [routerLinkActive]="['tab-active']"
         routerLink="todos"
         class="tab tab-lg"
         >Todos</a

@@ -14,7 +14,7 @@ import { TodoListEntryModel, TodoListItemModel } from './models';
 export class TodosComponent {
   todoList: TodoListItemModel[] = [];
 
-  onItemAdded(candidate: TodoListEntryModel) {
+  addItem(candidate: TodoListEntryModel) {
     const newItem: TodoListItemModel = {
       description: candidate.description,
       status: 'Later',
