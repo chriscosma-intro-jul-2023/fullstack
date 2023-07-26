@@ -9,3 +9,13 @@ Content-Type: application/json
 {
   "description": "Close Garage"
 }
+
+### Change Status
+POST http://localhost:8080/todo-list-status-change
+Content-Type: application/json
+
+{
+  "id": "6d9c89c0-d615-4fd5-b671-43cf7bc40df2",
+  "description": "Mow Lawn",
+  "status": "Later"
+}

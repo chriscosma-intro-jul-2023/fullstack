@@ -1,5 +1,6 @@
 using Marten;
 using System.Text.Json.Serialization;
+using TodosApi;
 using TodosApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,12 +27,24 @@ builder.Services.AddMarten(options =>
 });
 
 builder.Services.AddTransient<IManageTheTodolistCatalog, MartenTodolistCatalog>();
+builder.Services.AddTransient<IProvideStatusCycling, StatusCycler>();
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(pol =>
+    {
+        pol.AllowAnyOrigin();
+        pol.AllowAnyMethod();
+        pol.AllowAnyHeader();
+    });
+});
 
 // --- Everything above this line is configuring "Services" in our application ---
 
 // This is configuring the "middleware" - this is code that sees incoming HTTP requests
-// and makes a response
+// and makes a 
 var app = builder.Build();
+app.UseCors();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

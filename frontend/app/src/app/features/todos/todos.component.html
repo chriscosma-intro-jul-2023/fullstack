@@ -5,5 +5,5 @@
   <app-entry (onItemAdded)="addItem($event)" />
 </section>
 <section>
-  <app-list [list]="todoList" />
+  <app-list [list]="todoList()" (onStatusCycled)="statusChange($event)" />
 </section>
