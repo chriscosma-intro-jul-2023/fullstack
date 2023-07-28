@@ -16,6 +16,5 @@ import { Store } from '@ngrx/store';
   `,
 })
 export class HeaderComponent {
-  current = signal(3);
-  // current = inject(Store).selectSignal(selectCounterCurrent);
+  current = inject(Store).selectSignal(selectCounterCurrent);
 }

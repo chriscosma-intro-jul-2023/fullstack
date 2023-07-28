@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { FeatureEvents } from './feature.actions';
-import { map, mergeMap, switchMap } from 'rxjs';
+import { catchError, map, mergeMap, switchMap } from 'rxjs';
 import { TodoListItem } from './todo-list.reducer';
 import { TodoDocuments, TodosEvents } from './todos.actions';
 import { environment } from '../../../../environments/environment';
@@ -21,6 +21,17 @@ export class TodoListEffects {
             map((response) => response.list),
             map((payload) => TodoDocuments.todos({ payload }))
           )
+      )
+    );
+  });
+
+  cycleStatus$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(TodosEvents.itemStatusCycled),
+      mergeMap(({ payload }) =>
+        this.httpClient
+          .post<TodoListItem>(this.API_URL + 'todo-list-status-change', payload)
+          .pipe(map((payload) => TodoDocuments.todo({ payload })))
       )
     );
   });
